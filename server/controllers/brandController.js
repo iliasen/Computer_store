@@ -1,15 +1,17 @@
 const Brand = require('../models/Brand')
+const Type = require('../models/Type')
 const ApiError = require("../error/ApiError");
 
 
 class brandController{
     async create(req,res,next){
         try{
-            const {name} = req.body
+            const {name, type} = req.body
             if (!name){
                 next(ApiError.badRequest('Не задано имя бренда'))
             }
-            const brand = new Brand({name})
+            const typeId = Type.findOne({type})
+            const brand = new Brand({name, typeId})
             await brand.save()
             return res.json('Бренд успешно добавлен')
         }catch (e) {

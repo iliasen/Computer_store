@@ -29,7 +29,8 @@ class ItemController {
 
     async getAll(req,res,next){
         try{
-            const data = await Item.find()
+            const {brandId, typeId} = req.body
+            const data = await Item.find({brandId, typeId})
             return res.json({data})
         }catch (e) {
             next(ApiError(e.message))

@@ -1,0 +1,29 @@
+.home-about{
+    padding: 32px 100px;
+    background: #212936;
+    padding-bottom: 0;
+}
+
+.row{
+    display: flex;
+}
+.footer__partners{
+    flex: auto;
+    max-width: 50%;
+}
+.my-text{
+    color:#8490a4;
+    opacity: 1;
+}
+.my-text p{
+    width: 300px;
+    border-bottom: 1px solid #8490a4;
+}
+.my-text p:last-child{
+    border-bottom: 0;
+}
+.footer__adres{
+    flex: auto;
+    color: #fff;
+    max-width: 50%;
+}

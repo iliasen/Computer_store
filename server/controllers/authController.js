@@ -33,7 +33,7 @@ class authController {
             await user.save()
 
             const userId = await User.findOne({username})
-            await Basket.create({userId: userId._id})
+            await Basket.create({userId: userId})
 
             return res.json({message: "Пользователь успешно зарегистрирован"})
         } catch (e) {
