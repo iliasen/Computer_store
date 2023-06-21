@@ -3,15 +3,17 @@ import {Context} from "../index";
 import {fetchAllItems, fetchBrands, fetchTypes} from "../http/itemAPI";
 import {Dropdown} from "react-bootstrap";
 
+import {observer} from "mobx-react-lite";
 
-const Configuration = () => {
+
+const Configuration = observer(() => {
     const {item} = useContext(Context)
 
-    useEffect(()=> {
-        fetchTypes().then((type) => item.setTypes(type))
-        fetchBrands().then((brand)=>item.setBrands(brand))
-        fetchAllItems(item.selectedType,item.selectedBrand).then((items) => item.setItems(items))
-    },[])
+    // useEffect(()=> {
+    //     fetchTypes().then((type) => item.setTypes(type))
+    //     fetchBrands(item.selectedType).then((brand)=>item.setBrands(brand))
+    //     fetchAllItems(item.selectedType,item.selectedBrand).then((items) => item.setItems(items))
+    // },[])
     return (
         <div>
             <section className="hero d-flex flex-column justify-content-center align-items-center" id="home">
@@ -64,15 +66,20 @@ const Configuration = () => {
                 </Dropdown.Menu>
             </Dropdown>}
 
-            {item.selectedBrand && <>(item.items.map(item => <div className="form-check">
+            {item.selectedBrand && <div>
+                {item.items.map(item => <div className="form-check">
                     <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
                            value="option1" checked/>
                         <label className="form-check-label" htmlFor="exampleRadios1">
                             {item.name}
                         </label>
-                </div>)</>}
+                </div>)}
+            </div>}
+
+
+
         </div>
     );
-};
+});
 
 export default Configuration;

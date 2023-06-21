@@ -11,6 +11,8 @@ export default class ItemStore {
         makeAutoObservable(this)
     }
 
+
+
     setTypes(types) {
         this._types = types
     }
@@ -55,3 +57,4 @@ export default class ItemStore {
     }
 
 }
+
